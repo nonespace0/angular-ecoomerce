@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     throw new Error('Method not implemented.');
   }
 onSubmit() {
-  //input validate is valid
+  //input validate is not valid
   if(this.user.userName != null && this.user.password != null){
     if(this.valid.generateToken(this.user).subscribe(
       (response:any) =>{console.log(response.token)},
