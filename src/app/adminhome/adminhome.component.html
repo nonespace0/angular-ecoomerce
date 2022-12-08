@@ -1,0 +1,45 @@
+<section>
+<div class="topnav" >
+    <a class="active"  routerLink="admin" routerLinkActive="active">admin-Home</a>
+   
+    
+    <div class="topnav-right">
+      <a href="#search">Logout</a>
+      
+    </div>
+    </div>    
+    </section>
+    <section>
+ 
+    <div class="jumbotron text-center">
+        <h1>Welcom to Admin page</h1>
+        <p>Customize Your Product</p>
+      </div>
+    </section>
+    <section>
+    <router-outlet></router-outlet>
+    </section>
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 pt-3" >
+                <div class="card" style="background-color: #dee5e6;">
+                    <div class="card-body">
+                        <h4 class="card-title">Categories</h4>
+                        <p class="card-text">Manage the categories section here.</p>
+                        <a routerLink="add" routerLinkActive="active" class="card-link btn btn-primary">Manage</a>
+                        <button (click)="onClick()" class="card-link btn btn-success">Add</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 pt-3" >
+                <div class="card" style="background-color: #dee5e6;">
+                    <div class="card-body">
+                        <h4 class="card-title">Products</h4>
+                        <p class="card-text">Manage all the products here.</p>
+                        <button (click)="onProduct()" class="card-link btn btn-success">Add</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+
