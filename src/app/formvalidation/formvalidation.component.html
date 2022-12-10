@@ -1,0 +1,11 @@
+<div class="col-sm-6">
+<form [formGroup]="registerForm"  (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label><br>
+      <small *ngIf="submitted && registerForm.controls['name'].errors" class="text-danger">*name is required</small>
+      <input [ngClass]="{'is-invalid' :submitted && registerForm.controls['name'].errors}" class="text-danger" type="email" formControlName='name' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    </div>
+    <br>
+    <input type="submit" value="Register" class="btn btn-primary btn-block">
+    </form>
+    </div>
