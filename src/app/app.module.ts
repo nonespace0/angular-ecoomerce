@@ -19,7 +19,7 @@ import { LoginService } from './service/login.service';
 import { GuardsGuard } from './security/guards.guard';
 import { UploadimageComponent } from './uploadimage/uploadimage.component';
 import {MatButtonModule} from '@angular/material/button';
-import { FormvalidationComponent } from './formvalidation/formvalidation.component';
+import { FormvalidregisterComponent } from './formvalidregister/formvalidregister.component';
 
 
 @NgModule({
@@ -33,7 +33,8 @@ import { FormvalidationComponent } from './formvalidation/formvalidation.compone
      LoginComponent,
      CartComponent,
      UploadimageComponent,
-     FormvalidationComponent
+  
+     FormvalidregisterComponent
  
 
   ],

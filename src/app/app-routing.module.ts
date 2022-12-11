@@ -4,7 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { CartComponent } from './cart/cart.component';
 import { CategoryaddComponent } from './categoryadd/categoryadd.component';
-import { FormvalidationComponent } from './formvalidation/formvalidation.component';
+
+import { FormvalidregisterComponent } from './formvalidregister/formvalidregister.component';
 import { LoginComponent } from './login/login.component';
 import { ProductsaddComponent } from './productsadd/productsadd.component';
 import { RegisterComponent } from './register/register.component';
@@ -19,7 +20,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'admin', component: AdminhomeComponent,children:[{path: 'add', component: CategoryaddComponent}]},
   {path: 'productAdd', component:ProductsaddComponent},
-  {path: 'register', component:FormvalidationComponent},
+  {path: 'register', component:FormvalidregisterComponent},
   {path: 'login', component:LoginComponent},
   {path: 'cart', component:CartComponent},
   {path:'upload', component:UploadimageComponent}

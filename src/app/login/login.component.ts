@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserDetail } from '../Model/userdetail';
 import { LoginService } from '../service/login.service';
@@ -10,38 +11,40 @@ import { LoginService } from '../service/login.service';
 })
 export class LoginComponent implements OnInit {
 
+  loginForm:FormGroup;
+  submitted=false;
+
   user:UserDetail = new UserDetail();
   successmessage='';
   errormessage ='';
   fieldsEmpty='';
 
-  constructor(private valid:LoginService, private router:Router){}
+  constructor(private valid:LoginService, private router:Router, private formBuilder:FormBuilder){}
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+    this.loginForm = this.formBuilder.group({
+      email:['', Validators.required, Validators.email],
+      password:['', Validators.required]
+  })
+}
 onSubmit() {
-  //input validate is not valid
-  if(this.user.userName != null && this.user.password != null){
-    if(this.valid.generateToken(this.user).subscribe(
-      (response:any) =>{console.log(response.token)},
-      error =>{console.log(error)}
-     )){
-     this.successmessage="Login Sucess"
-     
-     }
-     else{
-      this.errormessage="bad"
-     }
   
-
+this.submitted=true;
+if(!this.loginForm.invalid){
+  
+  console.log(this.loginForm.value);
+  this.valid.login(this.user).subscribe(
+    data=>{this.successmessage="loginSucess";
+    this.router.navigateByUrl("/cart")},
+    error=>{this.errormessage="BadCredentials"})
+  
  
- }
- else{
-  console.log("Fields are empty")
-  
-  this.fieldsEmpty="Required all fields"
- }
+ 
+}
+else{
+return
 
+}
+  
   
 } 
 }

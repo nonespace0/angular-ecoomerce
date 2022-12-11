@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="col-sm-6">
+        <h3 style="margin-top: 10px">Sign Up Now</h3>
+        <p>Please fill out this to register</p>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" formControlName="name"
+                    [ngClass]="{'is-invalid' : submitted && registerForm.controls['name'].errors}" required
+                    placeholder="Your name" class="form-control form-control-lg">
+                <div class="text-danger" *ngIf="submitted && registerForm.get('name')?.errors">
+                    <small class="text-danger"
+                        *ngIf="submitted && registerForm.controls['name'].errors?.['required']">*Name is
+                        required</small>
+                    <small class="text-danger"
+                        *ngIf="submitted && registerForm.controls['name'].errors?.['pattern']">*Character only
+                        allowed</small>
+                </div>
+
+
+
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email </label>
+                <input type="email" formControlName="email"
+                    [ngClass]="{'is-invalid' : submitted && registerForm.controls['email'].errors}"
+                    class="form-control form-control-lg" name="email" aria-describedby="emailHelp">
+                <div class="text-danger" *ngIf="submitted && registerForm.get('email')?.errors">
+                    <small class="text-danger"
+                        *ngIf="submitted && registerForm.controls['email'].errors?.['required']">*Email is
+                        required</small>
+                    <small class="text-danger"
+                        *ngIf="submitted && registerForm.controls['email'].errors?.['email']">*Email is invalid</small>
+                </div>
+                <div class="form-group">
+                    <label for="email">Mobile No</label>
+                    <input type="text" formControlName="phone"
+                        [ngClass]="{'is-invalid' : submitted && registerForm.controls['phone'].errors}"
+                        class="form-control form-control-lg" name="phone" aria-describedby="emailHelp">
+                    <div *ngIf="submitted && registerForm.controls['phone'].errors">
+                    <small class="text-danger"
+                        *ngIf="submitted && registerForm.controls['phone'].errors?.['required']">*Mobile no is
+                        required</small>
+                     <small class="text-danger"
+                   
+                  *ngIf="submitted && registerForm.controls['phone'].errors?.['pattern']">*Mobile NO is invalid</small>
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Password</label>
+                    <input type="password" formControlName="password"
+                        [ngClass]="{'is-invalid' : submitted && registerForm.controls['password'].errors}"
+                        class="form-control form-control-lg" name="password" >
+                    <div *ngIf="submitted && registerForm.controls['password'].errors">
+                    <small class="text-danger"
+                        *ngIf="submitted && registerForm.controls['password'].errors?.['required']">*Password  is
+                        required</small>
+                        <small class="text-danger"
+                        *ngIf="submitted && registerForm.controls['password'].errors?.['minlength']">*8cha  is
+                        required</small>
+                     </div>
+                </div>
+                
+                
+                <br>
+
+                <input type="submit" value="Register" class="btn btn-primary btn-block">&nbsp;&nbsp;
+                <span style="margin-top: 10px">Already have an account <a class="linkControl" href="./login.html"
+                        th:href="@{/login}">Login here</a></span>
+            </div>
+        </form>
+    </div>
+</div>

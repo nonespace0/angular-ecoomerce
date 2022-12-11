@@ -3,21 +3,25 @@
         <div class="col-sm-6">
             <h2>Login</h2>
             <p>Please fill out this to login</p>
-            <form (ngSubmit) = "onSubmit()" >
+            <form [formGroup]="loginForm" (ngSubmit) = "onSubmit()" >
                 <small class="text-success">{{successmessage}}</small>
                 <small class="text-danger">{{errormessage}}</small>
                 <p class="text-danger">{{fieldsEmpty}}</p>
                 <div class="form-group">
-                    <label for="userName">Username</label>
-                    <input type="text" [(ngModel)]="user.userName" name="userName" id="userName" placeholder="Username" class="form-control form-control-lg">
-    
+                    <label for="userName">Email</label><br>
+                    <small *ngIf="submitted && loginForm.controls['email'].errors" class="text-danger">*Email is required</small>
+                    <input type="text"  formControlName="email"  [ngClass]="{'is-invalid' :submitted && loginForm.controls['email'].errors}"  [(ngModel)]="user.email" name="email" id="userName" placeholder="email"class="form-control form-control-lg">
+                    
 
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control form-control-lg" placeholder="Password" [(ngModel)]="user.password" name="password" id="password">
+                    <label for="password">Password</label><br>
+                    <small *ngIf="submitted && loginForm.controls['password'].errors" class="text-danger">*password is required</small>
+                    <input formControlName="password"  [ngClass]="{'is-invalid' :submitted && loginForm.controls['password'].errors}" type="password" class="form-control form-control-lg" placeholder="Password" [(ngModel)]="user.password" name="password" id="password">
                 </div>
+
+
                 
             <br>
             <p>{{user | json}}</p>

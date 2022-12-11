@@ -7,12 +7,15 @@ import { UserDetail } from '../Model/userdetail';
   providedIn: 'root'
 })
 export class LoginService {
-  private baseURL = "http://localhost:8002";
+  private baseURL = "http://localhost:8000";
 
   constructor(private httpClient:HttpClient) { }
   //calling the server generate token
   generateToken(user:any){
     return this.httpClient.post(`${this.baseURL}/token`, user);
+  }
+  login(user:UserDetail):Observable<Object>{
+    return this.httpClient.post(`${this.baseURL}/login`, user)
   }
 
   loginUser(token:any){
