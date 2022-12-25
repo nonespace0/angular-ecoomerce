@@ -19,10 +19,10 @@ export class LoginComponent implements OnInit {
   errormessage ='';
   fieldsEmpty='';
 
-  constructor(private valid:LoginService, private router:Router, private formBuilder:FormBuilder){}
+  constructor(private loginService:LoginService, private router:Router, private formBuilder:FormBuilder){}
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email:['', Validators.required, Validators.email],
+      userName:['', Validators.required],
       password:['', Validators.required]
   })
 }
@@ -32,10 +32,18 @@ this.submitted=true;
 if(!this.loginForm.invalid){
   
   console.log(this.loginForm.value);
-  this.valid.login(this.user).subscribe(
+  this.loginService.generateToken(this.user).subscribe(
+    (response:any)=>{console.log(response.token)
+    this.loginService.loginUser(response.token)
+    window.location.href=("/cart")
+  },
+  
+    error=>{console.log(error)});
+    
+ /* this.loginService.login(this.user).subscribe(
     data=>{this.successmessage="loginSucess";
     this.router.navigateByUrl("/cart")},
-    error=>{this.errormessage="BadCredentials"})
+    error=>{this.errormessage="BadCredentials"})*/
   
  
  

@@ -14,9 +14,11 @@ export class LoginService {
   generateToken(user:any){
     return this.httpClient.post(`${this.baseURL}/token`, user);
   }
-  login(user:UserDetail):Observable<Object>{
-    return this.httpClient.post(`${this.baseURL}/login`, user)
-  }
+ // login(user:UserDetail):Observable<Object>{
+  //  return this.httpClient.post(`${this.baseURL}/login`, user)
+ // }
+
+ 
 
   loginUser(token:any){
     localStorage.setItem("token", token)
@@ -24,7 +26,7 @@ export class LoginService {
   }
   isLoogedIn(){
     let token =localStorage.getItem("token");
-    if(token == undefined || token =='' || token==null){
+    if(token == undefined || token ==='' || token==null){
       return false
     }
     else{

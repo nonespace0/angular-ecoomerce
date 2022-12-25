@@ -5,9 +5,10 @@
     <div>
       <a class="right"  routerLink="admin" routerLinkActive="active">admin</a>
       <a class="right"  routerLink="register" routerLinkActive="active">SignUp</a>
-      <a class="right"  routerLink="login" routerLinkActive="active">Login</a>
-      <a class="right"  routerLink="cart" routerLinkActive="active">Cart</a>
+      <a class="right" *ngIf="!loggedIn" routerLink="login" routerLinkActive="active">Login</a>
+      <a class="right"  routerLink="cart"  routerLinkActive="active">Cart</a>
       <a class="right"  routerLink="upload" routerLinkActive="active">Upload Image</a>
+      <a class="right" *ngIf="loggedIn" (click)="logout()"routerLink="/login" routerLinkActive="active">Logout</a>
     </div>
   </nav>
 <router-outlet> </router-outlet>

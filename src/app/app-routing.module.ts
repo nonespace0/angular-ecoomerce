@@ -11,6 +11,7 @@ import { ProductsaddComponent } from './productsadd/productsadd.component';
 import { RegisterComponent } from './register/register.component';
 
 import { GuardsGuard } from './security/guards.guard';
+import { AuthGuard } from './service/auth.guard';
 import { UploadimageComponent } from './uploadimage/uploadimage.component';
 
 
@@ -22,9 +23,9 @@ const routes: Routes = [
   {path: 'productAdd', component:ProductsaddComponent},
   {path: 'register', component:FormvalidregisterComponent},
   {path: 'login', component:LoginComponent},
-  {path: 'cart', component:CartComponent},
-  {path:'upload', component:UploadimageComponent}
-  
+  {path: 'cart', component:CartComponent, canActivate:[AuthGuard]},
+  {path:'upload', component:UploadimageComponent},
+
   
  
 ];

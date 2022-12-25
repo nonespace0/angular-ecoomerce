@@ -8,9 +8,9 @@
                 <small class="text-danger">{{errormessage}}</small>
                 <p class="text-danger">{{fieldsEmpty}}</p>
                 <div class="form-group">
-                    <label for="userName">Email</label><br>
-                    <small *ngIf="submitted && loginForm.controls['email'].errors" class="text-danger">*Email is required</small>
-                    <input type="text"  formControlName="email"  [ngClass]="{'is-invalid' :submitted && loginForm.controls['email'].errors}"  [(ngModel)]="user.email" name="email" id="userName" placeholder="email"class="form-control form-control-lg">
+                    <label for="userName">Username</label><br>
+                    <small *ngIf="submitted && loginForm.controls['userName'].errors" class="text-danger">*Username is required</small>
+                    <input type="text"  formControlName="userName"  [ngClass]="{'is-invalid' :submitted && loginForm.controls['userName'].errors}"  [(ngModel)]="user.userName" name="userName" id="userName" placeholder="userName"class="form-control form-control-lg">
                     
 
                 </div>
